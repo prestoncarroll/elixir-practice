@@ -1,6 +1,15 @@
 defmodule Cards do
+    @moduledoc """
+provides methods for creating and handling a deck of cards.
+    """
 
 #  sets your value and suits array aka creates the deck
+
+
+@doc """ 
+returns a list of strings representing a deck of playing cards 
+"""
+
     def create_deck do
         values = ["Ace", "Two", "Three", "Four", "Five"]
         suits = ["Spades", "Clubs", "Hearts", "Diamonds"]

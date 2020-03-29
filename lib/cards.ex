@@ -1,55 +1,63 @@
 defmodule Cards do
  
- def create_deck do
-values = ["Ace", "Two", "Three", "Four", "Five"]
-suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
+    def create_deck do
+        values = ["Ace", "Two", "Three", "Four", "Five"]
+        suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
 
-for suit <- suits, value <- values do
+        for suit <- suits, value <- values do
 
-"#{value} of #{suit}"
-   
+        "#{value} of #{suit}"
+        
 
-end
+        end
 
- end
+    end
 
- def shuffle(deck) do
-Enum.shuffle(deck)
-# Cards.shuffle(deck)
-end
+    def shuffle(deck) do
+        Enum.shuffle(deck)
+        # Cards.shuffle(deck)
+    end
 
- def contains?(deck, card) do
+    def contains?(deck, card) do
 
-    Enum.member?(deck, card)
-    # recompile
-    # cli = deck = Cards.create_deck
-    # cli = Cards.contains?(deck, "Two")
-    # output =  true
+        Enum.member?(deck, card)
+        # recompile
+        # cli = deck = Cards.create_deck
+        # cli = Cards.contains?(deck, "Two")
+        # output =  true
 
- end
+    end
 
- def deal(deck, hand_size) do
+    def deal(deck, hand_size) do
 
-Enum.split(deck,hand_size)
- end
+       Enum.split(deck,hand_size)
+    end
 
- def save(deck, filename) do
-binary = :erlang.term_to_binary(deck)
-File.write(filename, binary)
+    def save(deck, filename) do
+        binary = :erlang.term_to_binary(deck)
+        File.write(filename, binary)
 
- end
-
-
- def load(filename) do
-
-case File.read(filename) do
-{:ok, binary} -> :erlang.binary_to_term binary
-{:error, _reason} -> "that file does not exist"
-end
+    end
 
 
- end
+    def load(filename) do
+
+        case File.read(filename) do
+        {:ok, binary} -> :erlang.binary_to_term binary
+        {:error, _reason} -> "that file does not exist"
+        end
+
+
+    end
+
+
+    def create_hand(hand_size) do
+         Cards.create_deck
+        |> Cards.shuffle
+        |> Cards.deal(hand_size)
+
+    end
 
 
 

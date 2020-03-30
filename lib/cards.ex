@@ -3,11 +3,16 @@ defmodule Cards do
 provides methods for creating and handling a deck of cards.
     """
 
-#  sets your value and suits array aka creates the deck
+
 
 
 @doc """ 
 returns a list of strings representing a deck of playing cards 
+
+## Example
+
+        iex> deck = Cards.create_deck
+       
 """
 
     def create_deck do
@@ -25,7 +30,16 @@ returns a list of strings representing a deck of playing cards
     end
 
 
-#  shuffles the deck using enum! (elixer documentation)
+
+
+@doc """ 
+shuffles deck of cards
+
+## Example
+
+        iex> deck = Cards.create_deck
+        iex> Cards.shuffle(deck)
+"""
     def shuffle(deck) do
         Enum.shuffle(deck)
         # Cards.shuffle(deck)
@@ -33,17 +47,39 @@ returns a list of strings representing a deck of playing cards
 
 
 # checks to see if you have a specific card or suit 
+
+
+@doc """ 
+checks to see if a specific `card` is in the deck.
+
+## Example
+
+    
+        iex> = deck = Cards.create_deck
+        iex> = Cards.contains?(deck, "Two of Spades")
+         output =  true
+"""
     def contains?(deck, card) do
 
         Enum.member?(deck, card)
-        # recompile
-        # cli = deck = Cards.create_deck
-        # cli = Cards.contains?(deck, "Two")
-        # output =  true
+       
 
     end
 
-    #  deals your cards and you can vary your hand_size with an integer Cards.deal(deck, 4)
+    
+
+    @doc """
+    divides a deck into a hand and the remainder of the deck.
+    the `hand_size` agrugment indicates how many cards should be in the hand.
+
+    ## Example
+
+        iex> deck = Cards.create_deck
+        iex> {hand, deck} = Cards.deal(deck, 1)
+        iex> hand
+        ["Ace of Spades"]
+
+    """
     def deal(deck, hand_size) do
 
        Enum.split(deck,hand_size)
@@ -51,6 +87,16 @@ returns a list of strings representing a deck of playing cards
 
 
 
+
+
+    @doc """
+    saves deck to your `filename`.
+
+    ## Example
+
+        iex> Cards.save(deck, 'my_deck')
+
+    """
     def save(deck, filename) do
         
         binary = :erlang.term_to_binary(deck)
@@ -59,9 +105,16 @@ returns a list of strings representing a deck of playing cards
     end
 
 
+ @doc """
+    loads deck from your `filename`.
 
-    # Cards.load("my_Deck")
-    # throws an error if file not found
+    ## Example
+
+        iex> Cards.load("my_deck")
+
+    """
+   
+    
     def load(filename) do
 
 
@@ -73,6 +126,16 @@ returns a list of strings representing a deck of playing cards
     end
 
 # using the pipe operater to add of your function to one place
+
+@doc """
+    Creates a hand based on your `hand_size`.
+
+    ## Example
+        iex> deck = Cards.create_deck
+        iex> Cards.create_hand(4)
+        output = ["Ace of Spades", "Four of Clubs", "Two of Diamonds", "Ace of Diamonds"]
+
+    """
     def create_hand(hand_size) do
          Cards.create_deck
         |> Cards.shuffle

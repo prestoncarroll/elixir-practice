@@ -1,6 +1,6 @@
 defmodule Cards do
     @moduledoc """
-provides methods for creating and handling a deck of cards.
+       provides methods for creating and handling a deck of cards.
     """
 
 
@@ -55,9 +55,9 @@ checks to see if a specific `card` is in the deck.
 ## Example
 
     
-        iex> = deck = Cards.create_deck
-        iex> = Cards.contains?(deck, "Two of Spades")
-         output =  true
+        iex> deck = Cards.create_deck
+        iex> Cards.contains?(deck, "Ace of Spades")
+        true
 """
     def contains?(deck, card) do
 
@@ -94,7 +94,7 @@ checks to see if a specific `card` is in the deck.
 
     ## Example
 
-        iex> Cards.save(deck, 'my_deck')
+        #  iex> Cards.save(deck, 'my_deck')
 
     """
     def save(deck, filename) do
@@ -131,9 +131,9 @@ checks to see if a specific `card` is in the deck.
     Creates a hand based on your `hand_size`.
 
     ## Example
-        iex> deck = Cards.create_deck
+        iex(1)> deck = Cards.create_deck
         iex> Cards.create_hand(4)
-        output = ["Ace of Spades", "Four of Clubs", "Two of Diamonds", "Ace of Diamonds"]
+        
 
     """
     def create_hand(hand_size) do

@@ -142,7 +142,7 @@ checks to see if a specific `card` is in the deck.
         |> Cards.deal(hand_size)
 
     end
-
+ 
 
 
 
